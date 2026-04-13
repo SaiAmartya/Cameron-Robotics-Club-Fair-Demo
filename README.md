@@ -20,6 +20,14 @@ python realtime_object_detection.py
 - A window opens showing detections with bounding boxes, class names, confidence, and FPS (top-left).
 - Press `q` to quit.
 
+## Troubleshooting
+### macOS PyTorch ImportError
+If you encounter `Symbol not found: __ZN2at23SavedTensorDefaultHooks...` when running the script, your PyTorch cache might be corrupted. Reinstall PyTorch and Ultralytics without using the pip cache:
+```bash
+pip uninstall -y torch torchvision torchaudio ultralytics
+pip install --no-cache-dir torch torchvision torchaudio ultralytics opencv-python
+```
+
 ## Notes
 - The script uses the YOLOv11 nano detection model `yolo11n.pt` (downloads automatically on first run).
 - If you have multiple cameras, try changing the index in `cv2.VideoCapture(0)` to `1`, `2`, etc.
